@@ -1,1 +1,1 @@
-export const DB_NAME = "WATCHLY";
+export const DB_NAME = "watchly";
