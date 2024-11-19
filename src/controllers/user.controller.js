@@ -36,7 +36,6 @@ const registerUser = asyncHandler(async (req, res) => {
   // return response
 
   const { fullname, email, username, password } = req.body;
-  console.log("email: ", email);
 
   if (
     [fullname, email, username, password].some((field) => field?.trim() === "")
@@ -163,8 +162,8 @@ const logoutUser = asyncHandler(async (req, res) => {
   await User.findByIdAndUpdate(
     req.user._id,
     {
-      $set: {
-        refreshToken: undefined,
+      $unset: {
+        refreshToken: 1, // this removes the field from document
       },
     },
     {
